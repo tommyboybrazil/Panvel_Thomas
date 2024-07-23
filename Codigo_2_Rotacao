@@ -1,0 +1,55 @@
+def criptografar(texto, rotacoes):
+  """
+  Função para criptografar um texto usando a cifra de rotação.
+
+  Args:
+    texto: O texto que deseja ser criptografado.
+    rotacoes: O número de posições que as letras serão giradas.
+
+  Returns:
+    O texto criptografado.
+  """
+
+  texto_cifrado = ""
+  for letra in texto:
+    if letra.isalpha():
+      indice_original = ord(letra) - ord("a")
+      indice_cifrado = (indice_original + rotacoes) % 26
+      letra_cifrada = chr(ord("a") + indice_cifrado)
+      texto_cifrado += letra_cifrada
+    else:
+      texto_cifrado += letra
+  return texto_cifrado
+
+def descriptografar(texto_cifrado, rotacoes):
+  """
+  Função para descriptografar um texto usando a cifra de rotação.
+
+  Args:
+    texto_cifrado: O texto criptografado que deseja ser descriptografado.
+    rotacoes: O número de posições que as letras foram giradas.
+
+  Returns:
+    O texto original.
+  """
+
+  texto_original = ""
+  for letra_cifrada in texto_cifrado:
+    if letra_cifrada.isalpha():
+      indice_cifrado = ord(letra_cifrada) - ord("a")
+      indice_original = (indice_cifrado - rotacoes) % 26
+      letra_original = chr(ord("a") + indice_original)
+      texto_original += letra_original
+    else:
+      texto_original += letra_cifrada
+  return texto_original
+
+# Exemplo de uso
+texto = "ola, meu nome e thomas, e o seu?"
+rotacoes = 8
+
+texto_cifrado = criptografar(texto, rotacoes)
+print(f"Texto criptografado: {texto_cifrado}")
+
+texto_original = descriptografar(texto_cifrado, rotacoes)
+print(f"Texto original: {texto_original}")
