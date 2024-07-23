@@ -1,0 +1,15 @@
+def teste(rex, bob, oli):
+    dist_rex = abs(rex - oli)
+    dist_bob = abs(bob - oli)
+    
+    if dist_rex < dist_bob:
+        return "rex"
+    elif dist_bob < dist_rex:
+        return "bob"
+    else:
+        return "oli"
+
+# Teste com os exemplos fornecidos:
+print(teste(7, 6, 5))  # Saída esperada: rex
+print(teste(2, 1, 4))  # Saída esperada: bob
+print(teste(3, 3, 6))  # Saída esperada: oli
